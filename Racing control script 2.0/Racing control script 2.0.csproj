@@ -100,7 +100,6 @@
     <Compile Include="DynamicCOM.cs" />
     <Compile Include="GyroControl.cs" />
     <Compile Include="GyroUtils.cs" />
-    <Compile Include="INISerializer.cs" />
     <Compile Include="Lcd.cs" />
     <Compile Include="Lights.cs" />
     <Compile Include="Logo.cs" />
@@ -117,6 +116,7 @@
     <Compile Include="Transponder.cs" />
     <Compile Include="WheelControl.cs" />
   </ItemGroup>
+  <Import Project="..\..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
     <Copy SourceFiles="mdk\mdk.options" DestinationFolder="$(TargetDir)\mdk" />

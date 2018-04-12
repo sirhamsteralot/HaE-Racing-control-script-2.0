@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Racing control script 2.0", "Racing control script 2.0\Racing control script 2.0.csproj", "{E20C20A9-300F-4ADF-B408-80F71CAE8AA2}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaE Serialization", "..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.shproj", "{633D8B24-4B3B-4C26-9480-DBA498CC7831}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.projitems*{633d8b24-4b3b-4c26-9480-dba498cc7831}*SharedItemsImports = 13
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.projitems*{e20c20a9-300f-4adf-b408-80f71cae8aa2}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 	EndGlobalSection
