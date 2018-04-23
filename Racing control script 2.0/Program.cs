@@ -163,22 +163,20 @@ namespace IngameScript
 
 
             /*============|  Argument  |=============*/
-            if (argument == "Timer")
+            switch (argument)
             {
-                stopwatch.Toggle();
-            }
-
-            if (argument == "SnowMode")
-            {
-                wheel.ToggleSnowMode();
-            }
-
-            if (argument == "Parteh")
-            {
-                lights.SetCycle(true);
-            } else if (argument == "NoParteh")
-            {
-                lights.SetCycle(false);
+                case "Timer":
+                    stopwatch.Toggle();
+                    break;
+                case "SnowMode":
+                    wheel.ToggleSnowMode();
+                    break;
+                case "Parteh":
+                    lights.SetCycle(true);
+                    break;
+                case "NoParteh":
+                    lights.SetCycle(false);
+                    break;
             }
 
             /*=====|  Each time the pb is run  |=====*/

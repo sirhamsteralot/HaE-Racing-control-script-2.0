@@ -74,22 +74,23 @@ namespace IngameScript
             public void StabelizeUpwards(Vector3D groundUpVector)
             {
                 Vector3D upVector = groundUpVector;
+                Vector3D forwardVector;
 
                 if (groundUpVector == Vector3D.Zero)
                     upVector = Vector3D.Normalize(-rc.GetNaturalGravity());
 
                 upVector += pitchUpBias * rc.WorldMatrix.Backward;
 
-                var refLeft = rc.WorldMatrix.Left;
-                var refUp = rc.WorldMatrix.Backward;
+                //var refLeft = rc.WorldMatrix.Left;
+                //var refUp = rc.WorldMatrix.Backward;
                 var refForward = rc.WorldMatrix.Up;
 
                 double dotUp = 1 - Vector3D.Dot(upVector, refForward);
                 double multiplier = (double)MyMath.Clamp((float)(dotUp * 2 * dotUp), 1, 10);
 
-                MatrixD rotationMatrix = MatrixD.CreateFromDir(refForward, refUp);
+                //MatrixD rotationMatrix = MatrixD.CreateFromDir(refForward, refUp);
 
-                GyroUtils.PointInDirection(gyros, rotationMatrix, upVector, multiplier * upwardStabelizationMultiplier);
+                GyroUtils.PointInDirection(gyros, rc.WorldMatrix, rc.GetShipVelocities().LinearVelocity, upVector, multiplier * upwardStabelizationMultiplier);
             }
 
             public bool LeftRightInput()

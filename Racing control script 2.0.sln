@@ -7,10 +7,22 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Racing control script 2.0",
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaE Serialization", "..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.shproj", "{633D8B24-4B3B-4C26-9480-DBA498CC7831}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaE Autopilot Module", "..\..\..\..\..\MDK_Projects\Shared Projects\HaE Autopilot Module\HaE Autopilot Module.shproj", "{4EFA3DC1-C6DF-4853-962D-E2998290B240}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaE VectorUtils", "..\..\..\..\..\MDK_Projects\Shared Projects\VectorUtils\HaE VectorUtils.shproj", "{477E0254-B96C-41F0-80EA-77F22D2133B9}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "HaE GridTerminalSystemUtils", "..\..\..\..\..\MDK_Projects\Shared Projects\HaE GridTerminalSystemUtils\HaE GridTerminalSystemUtils.shproj", "{EC6DFC99-0769-41FC-96A3-029FBEB3A7A1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\..\..\..\..\MDK_Projects\Shared Projects\VectorUtils\VectorUtils.projitems*{477e0254-b96c-41f0-80ea-77f22d2133b9}*SharedItemsImports = 13
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Autopilot Module\HaE Autopilot Module.projitems*{4efa3dc1-c6df-4853-962d-e2998290b240}*SharedItemsImports = 13
 		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.projitems*{633d8b24-4b3b-4c26-9480-dba498cc7831}*SharedItemsImports = 13
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Autopilot Module\HaE Autopilot Module.projitems*{e20c20a9-300f-4adf-b408-80f71cae8aa2}*SharedItemsImports = 4
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE GridTerminalSystemUtils\HaE GridTerminalSystemUtils.projitems*{e20c20a9-300f-4adf-b408-80f71cae8aa2}*SharedItemsImports = 4
 		..\..\..\..\..\MDK_Projects\Shared Projects\HaE Serialization\HaE Serialization.projitems*{e20c20a9-300f-4adf-b408-80f71cae8aa2}*SharedItemsImports = 4
+		..\..\..\..\..\MDK_Projects\Shared Projects\VectorUtils\VectorUtils.projitems*{e20c20a9-300f-4adf-b408-80f71cae8aa2}*SharedItemsImports = 4
+		..\..\..\..\..\MDK_Projects\Shared Projects\HaE GridTerminalSystemUtils\HaE GridTerminalSystemUtils.projitems*{ec6dfc99-0769-41fc-96a3-029fbeb3a7a1}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

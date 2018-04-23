@@ -40,7 +40,6 @@ namespace IngameScript
             public float NormalOffset { get { return (float)wheelSettingINI.GetValue("NormalOffset"); } set { wheelSettingINI.SetValue("NormalOffset", value); } }
             public float MinClearance { get { return (float)wheelSettingINI.GetValue("MinClearance"); } set { wheelSettingINI.SetValue("MinClearance", value); } }
 
-
             //Suspension Steering parameters
             public float RoughTerrainSteering { get { return (float)wheelSettingINI.GetValue("RoughTerrainSteering"); } set { wheelSettingINI.SetValue("RoughTerrainSteering", value); } }
             public float PavedTerrainSteering { get { return (float)wheelSettingINI.GetValue("PavedTerrainSteering"); } set { wheelSettingINI.SetValue("PavedTerrainSteering", value); } }
