@@ -26,7 +26,7 @@ namespace IngameScript
 
             Program P;
 
-            string TopMsg = "HaE Racer control  V 2.17.0";
+            string topMsg = "HaE Racer control  V 2.17.7";
 
             string[] frames = {
                                 "[=========||===========]",
@@ -64,7 +64,7 @@ namespace IngameScript
                     if (WhereInTheLoop >= frames.Length)
                         WhereInTheLoop = 0;
 
-                    P.Echo(TopMsg + "\n" + frames[WhereInTheLoop]);
+                    P.Echo(topMsg + "\n" + frames[WhereInTheLoop]);
                 }
             }
         }

@@ -59,10 +59,6 @@ namespace IngameScript
                 {
                     SetOverride(false);
                 } 
-                else if (LeftRightInput())
-                {
-                    SetPower(lowStabelization);
-                }
                 else
                 {
                     SetOverride(true);
@@ -73,24 +69,31 @@ namespace IngameScript
 
             public void StabelizeUpwards(Vector3D groundUpVector)
             {
+                Vector3D velocity = rc.GetShipVelocities().LinearVelocity;
+                velocity.Normalize();
+
                 Vector3D upVector = groundUpVector;
-                Vector3D forwardVector;
+                Vector3D forwardVector = VectorUtils.ProjectOnPlanePerpendiculair(rc.WorldMatrix.Left, rc.WorldMatrix.Forward, velocity);
 
                 if (groundUpVector == Vector3D.Zero)
                     upVector = Vector3D.Normalize(-rc.GetNaturalGravity());
 
                 upVector += pitchUpBias * rc.WorldMatrix.Backward;
 
-                //var refLeft = rc.WorldMatrix.Left;
-                //var refUp = rc.WorldMatrix.Backward;
+                var refLeft = rc.WorldMatrix.Left;
+                var refUp = rc.WorldMatrix.Backward;
                 var refForward = rc.WorldMatrix.Up;
 
                 double dotUp = 1 - Vector3D.Dot(upVector, refForward);
-                double multiplier = (double)MyMath.Clamp((float)(dotUp * 2 * dotUp), 1, 10);
+                double multiplier = MyMath.Clamp((float)(dotUp * 2 * dotUp), 1, 10);
 
-                //MatrixD rotationMatrix = MatrixD.CreateFromDir(refForward, refUp);
+                MatrixD rotationMatrix = MatrixD.CreateFromDir(refForward, refUp);
 
-                GyroUtils.PointInDirection(gyros, rc.WorldMatrix, rc.GetShipVelocities().LinearVelocity, upVector, multiplier * upwardStabelizationMultiplier);
+                Vector3D moveindicatorUP = VectorUtils.Project(VectorUtils.TransformDirLocalToWorld(rc.WorldMatrix, rc.MoveIndicator), rc.WorldMatrix.Right);
+
+                forwardVector += moveindicatorUP;
+
+                GyroUtils.PointInDirection(gyros, rotationMatrix, upVector, -forwardVector, multiplier * upwardStabelizationMultiplier);
             }
 
             public bool LeftRightInput()
