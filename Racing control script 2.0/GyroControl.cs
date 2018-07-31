@@ -29,6 +29,8 @@ namespace IngameScript
             float upwardStabelizationMultiplier { get { return (float)GyroSettingINI.GetValue("upwardStabelizationMultiplier"); } set { GyroSettingINI.SetValue("upwardStabelizationMultiplier", value); } }
             float pitchUpBias { get { return (float)GyroSettingINI.GetValue("pitchUpBias"); } set { GyroSettingINI.SetValue("pitchUpBias", value); } }
 
+            float userInputMultiplier { get { return (float)GyroSettingINI.GetValue("userInputMultiplier"); } set { GyroSettingINI.SetValue("userInputMultiplier", value); } }
+
             List<IMyGyro> gyros = new List<IMyGyro>();
             IMyShipController rc;
             Program P;
@@ -42,6 +44,7 @@ namespace IngameScript
                 GyroSettingINI.AddValue("highStabelization", x => float.Parse(x), 1f);
                 GyroSettingINI.AddValue("upwardStabelizationMultiplier", x => float.Parse(x), 1f);
                 GyroSettingINI.AddValue("pitchUpBias", x => float.Parse(x), 0.15f);
+                GyroSettingINI.AddValue("userInputMultiplier", x => float.Parse(x), 1f);
 
                 string temp = P.Me.CustomData;
                 GyroSettingINI.FirstSerialization(ref temp);
@@ -91,7 +94,7 @@ namespace IngameScript
 
                 Vector3D moveindicatorUP = VectorUtils.Project(VectorUtils.TransformDirLocalToWorld(rc.WorldMatrix, rc.MoveIndicator), rc.WorldMatrix.Right);
 
-                forwardVector += moveindicatorUP;
+                forwardVector += moveindicatorUP * userInputMultiplier;
 
                 GyroUtils.PointInDirection(gyros, rotationMatrix, upVector, -forwardVector, multiplier * upwardStabelizationMultiplier);
             }
