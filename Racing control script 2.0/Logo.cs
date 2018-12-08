@@ -26,7 +26,7 @@ namespace IngameScript
 
             Program P;
 
-            string topMsg = "HaE Racer control  V 2.17.8";
+            string topMsg = "HaE Racer control  V 2.17.10";
 
             string[] frames = {
                                 "[=========||===========]",

@@ -29,7 +29,6 @@ namespace IngameScript
             public float offRoadMultiplier { get { return (float)wheelSettingINI.GetValue("offRoadMultiplier"); } set { wheelSettingINI.SetValue("offRoadMultiplier", value); } }
             public float snowFriction { get { return (float)wheelSettingINI.GetValue("snowFriction"); } set { wheelSettingINI.SetValue("snowFriction", value); } }
             public float brakeMultiplier { get { return (float)wheelSettingINI.GetValue("brakeMultiplier"); } set { wheelSettingINI.SetValue("brakeMultiplier", value); } }
-            public float speedSignificanceMultiplier { get { return (float)wheelSettingINI.GetValue("speedSignificanceMultiplier"); } set { wheelSettingINI.SetValue("speedSignificanceMultiplier", value); } }
             public float antiFlipMultiplier { get { return (float)wheelSettingINI.GetValue("antiFlipMultiplier"); } set { wheelSettingINI.SetValue("antiFlipMultiplier", value); } }
             public float antiFlipDotTreshhold { get { return (float)wheelSettingINI.GetValue("antiFlipDotTreshhold"); } set { wheelSettingINI.SetValue("antiFlipDotTreshhold", value); } }
 
@@ -97,7 +96,6 @@ namespace IngameScript
                 wheelSettingINI.AddValue("offRoadMultiplier", x => float.Parse(x), 1f);
                 wheelSettingINI.AddValue("snowFriction", x => float.Parse(x), 100f);
                 wheelSettingINI.AddValue("brakeMultiplier", x => float.Parse(x), 0.5f);
-                wheelSettingINI.AddValue("speedSignificanceMultiplier", x => float.Parse(x), 1.5f);
                 wheelSettingINI.AddValue("antiFlipMultiplier", x => float.Parse(x), 0f);
                 wheelSettingINI.AddValue("antiFlipDotTreshhold", x => float.Parse(x), 0.05f);
 
@@ -310,10 +308,7 @@ namespace IngameScript
 
             private void Friction(float multiplier)
             {
-
-                double currentVelocity = rc.GetShipVelocities().LinearVelocity.Length();
-
-                percent = (float)currentVelocity * speedSignificanceMultiplier / maxSpeed * maxFriction * multiplier;
+                percent = maxFriction * multiplier;
 
                 percent = MyMath.Clamp(percent, minFriction, maxFriction);
 
@@ -365,7 +360,7 @@ namespace IngameScript
             {
                 foreach (IMyMotorSuspension wheel in wheelList)
                 {
-                    wheel.SetValueFloat("Friction", percentage);
+                    wheel.Friction = percentage;
                 }
             }
 
@@ -373,7 +368,7 @@ namespace IngameScript
             {
                 foreach (IMyMotorSuspension wheel in wheels)
                 {
-                    wheel.SetValueFloat("Friction", percent);
+                    wheel.Friction = percent;
                 }
             }
 
